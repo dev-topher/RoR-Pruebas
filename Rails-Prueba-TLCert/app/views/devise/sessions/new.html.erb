@@ -1,0 +1,37 @@
+<% content_for :head do %>
+  <title>Login - FullClima</title>
+<% end %>
+
+<div class="container">
+  <div class="row py-5">
+    <h2 class="text-center">Inicia sesión</h2>
+  </div>
+  <div class="row py-5">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, class: ["form-label"] %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: ["form-control"] %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label "Contraseña", class: ["form-label"] %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: ["form-control"] %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="mb-3">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "Recuérdame" %>        
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= f.submit "Inicia sesión", class: "btn btn-success w-100" %>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

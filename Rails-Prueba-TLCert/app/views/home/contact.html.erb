@@ -1,0 +1,43 @@
+<% content_for :head do %>
+  <title>Contacto - FullClima</title>
+<% end %>
+
+<body>
+    <%= render "shared/navbar" %>
+
+    <div class="container">
+      <div class="row py-5">
+        <div class="col-12">
+          <h2 class="text-center">Formulario de contacto</h2>
+        </div>
+      </div>
+      
+      <%= form_for :contact, url: contact_save_path, method: :post do |f| %>
+
+        <div class="row py-3">
+          <%= f.label :name, "Nombre" %>
+          <%= f.text_field :name, class: "form-control", required: true %>
+        </div>
+        <div class="row py-3">
+          <%= f.label :email, "Email" %>
+          <%= f.text_field :email, class: "form-control", required: true %>
+        </div>
+        <div class="row py-3">
+          <%= f.label :number, "Número telefónico" %>
+          <%= f.text_field :number, class: "form-control", type: "number", required: true %>
+        </div>
+        <div class="row py-3">
+          <%= f.label :consulta, "Ingrese su consulta/cotización" %>
+          <%= f.text_area :consulta, class: "form-control", required: true %>
+        </div>
+
+        <div class="row py-3">
+          <%= f.submit "Envíanos tu información", class: "btn btn-success w-100" %>
+        </div>
+
+      <% end %>
+
+    </div>
+
+    <%= render "shared/footer" %>
+</body>

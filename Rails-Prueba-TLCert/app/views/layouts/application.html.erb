@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <%= favicon_link_tag 'favicon.png' %>
+
+
+    <%= yield :head %>
+ 
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+
+    <script src="https://kit.fontawesome.com/178860d74b.js" crossorigin="anonymous"></script>
+  </head>
+
+  <%= yield %>
+  
+</html>

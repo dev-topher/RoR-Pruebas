@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+          <%= link_to(root_path, class: "navbar-brand") do %>
+            FullClima
+          <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to(root_path, class: "nav-link") do %>
+            <i class="fa-solid fa-house"></i> Home
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(terminos_y_condiciones_path, class: "nav-link") do %>
+            <i class="fa-brands fa-readme"></i> TyC
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(contacto_path, class: "nav-link") do %>
+            <i class="fa-solid fa-address-card"></i> Contacto
+          <% end %>
+        </li>
+        <% if current_user.present? %>
+          <li class="nav-item">
+            <%= link_to(equipo_path, class: "nav-link") do %>
+              <i class="fa-solid fa-address-card"></i> Equipo
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to(mantenimiento_path, class: "nav-link") do %>
+              <i class="fa-solid fa-address-card"></i> Mantenimiento
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to(post_servicio_path, class: "nav-link") do %>
+              <i class="fa-solid fa-address-card"></i> Post Servicio
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+
+        <% if current_user.present? %>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido/a <%= current_user.email %></a>
+
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li><%= button_to 'Cerrar sesión', destroy_user_session_path, class: 'dropdown-item', method: :delete %></li>
+            </ul>
+          </li>
+
+        <% else %>
+
+          <li class="nav-item">
+            <%= link_to(new_user_session_path, class: "nav-link") do %>
+              <i class="fa-solid fa-user"></i> Inicia sesión
+            <% end %>
+          </li>
+          
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>

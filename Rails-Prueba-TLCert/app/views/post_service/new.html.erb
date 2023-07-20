@@ -1,0 +1,63 @@
+<% content_for :head do %>
+  <title>Post - Servicio</title>
+<% end %>
+
+<body>
+    
+    <%= render "shared/navbar" %>
+    <div class="container">
+        <%= form_for :post_service, url: post_servicio_new_path, method: :post do |f| %>
+
+            <div class="row py-5">
+                <div class="col-12">
+                    <h2 class="text-center">Crea un nuevo post-servicio</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12"><%= flash.notice %></div>
+            </div>
+
+            <div class="row py-2">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Selecciona</option>
+                            <option value="1">Preventivo</option>
+                            <option value="2">Correctivo</option>
+                        </select>
+                        <label for="floatingSelect">Elija el estado del post-servicio</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-2">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Selecciona</option>
+                            <% @maintenances.each do |maintenance| %>
+                                <option value="<%= maintenance.id %>"><%= maintenance.id %></option>
+                            <% end %>   
+                        </select>
+                        <label for="floatingSelect">Elija el mantenimiento finalizado</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-5">
+                <div class="col-12">
+                    <label for="image">Evidencia</label>
+                    <%= f.file_field :image, class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="row py-5">
+                <%= f.submit "Crea el equipo", class: "btn btn-success w-100" %>
+            </div>
+
+        <% end %>
+    </div>
+    <%= render "shared/footer" %>
+
+</body>    
+    

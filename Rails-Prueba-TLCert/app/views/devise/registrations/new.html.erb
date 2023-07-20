@@ -1,0 +1,41 @@
+<% content_for :head do %>
+  <title>Registro - FullClima</title>
+<% end %>
+
+<div class="container">
+  <div class="row py-5">
+    <h2 class="text-center">Registra un nuevo usuario</h2>
+  </div>
+
+  <div class="row py-5">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="mb-3">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: ["form-control"] %>
+      </div>
+      
+      <div class="mb-3">
+        <%= f.label "Contraseña" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> carácteres minimos)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: ["form-control"] %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label "Repite contraseña" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: ["form-control"] %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.submit "Registra", class: "btn btn-success w-100" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+</div>
+

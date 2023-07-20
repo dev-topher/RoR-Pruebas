@@ -1,0 +1,56 @@
+<% content_for :head do %>
+  <title>Nuevo mantenimiento</title>
+<% end %>
+
+<body>
+    
+    <%= render "shared/navbar" %>
+
+    <div class="container">
+        <%= form_for :maintenance, url: mantenimiento_new_path, method: :post do |f| %>
+
+            <div class="row py-5">
+                <div class="col-12">
+                    <h2 class="text-center">Crea un nuevo mantenimiento</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12"><%= flash.notice %></div>
+            </div>
+
+            <div class="row py-3">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Selecciona</option>
+                            <option value="1">Preventivo</option>
+                            <option value="2">Correctivo</option>
+                        </select>
+                        <label for="floatingSelect">Elija el tipo de mantenimiento</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-3">
+                <% @materials.each do |material| %>
+                    <div class="col-4 py-1">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="selected_materials[]" value="<%= material.id %>">
+                        <%= material.name %>
+                        </label>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="row py-5">
+                <%= f.submit "Crea el mantenimiento", class: "btn btn-success w-100" %>
+            </div>
+
+        <% end %>
+    </div>
+
+    <%= render "shared/footer" %>
+
+</body>    
+    

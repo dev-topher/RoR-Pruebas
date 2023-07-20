@@ -1,0 +1,62 @@
+<% content_for :head do %>
+  <title>Nuevo equipamiento</title>
+<% end %>
+
+<body>
+    
+    <%= render "shared/navbar" %>
+    <div class="container">
+        <%= form_for :equipement, url: equipo_new_path, method: :post do |f| %>
+
+            <div class="row py-3">
+                <div class="col-12">
+                    <h2 class="text-center">Crea un nuevo equipo</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12"><%= flash.notice %></div>
+            </div>
+
+            <div class="row py-3">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="equipement[type_equipement]">
+                            <option selected>Selecciona</option>
+                            <option value="1">Aire acondicionado</option>
+                            <option value="2">Calentador</option>
+                        </select>
+                        <label for="floatingSelect">Elija el tipo de equipo</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row py-3">
+                <div class="col-12">
+                    <%= f.label :name, "Nombre" %>
+                    <%= f.text_field :name, class: "form-control", required: true %>
+                </div>
+            </div>
+            <div class="row py-3">
+                <div class="col-12">
+                    <%= f.label :description, "Descripción" %>
+                    <%= f.text_field :description, class: "form-control", required: true %>
+                </div>
+            </div>
+            <div class="row py-3">
+                <div class="col-12">
+                    <label for="image">Imagen</label>
+                    <%= f.file_field :image, class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="row py-3">
+                <%= f.submit "Crea el equipo", class: "btn btn-success w-100" %>
+            </div>
+
+        <% end %>
+    </div>
+    <%= render "shared/footer" %>
+
+</body>    
+    
