@@ -1,0 +1,32 @@
+<%= render "shared/navbar" %>
+
+<p style="color: green"><%= notice %></p>
+
+<div class="container" id="clients">
+  <h1 class="text-center">Clients</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <th scope="row"><%= client.id %></th>
+            <td><%= client.name %></td>
+            <td><%= client.email %></td>
+            <td><%= link_to "Detalles", client %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>
+
+<%= link_to "New client", new_client_path %>
+
+<%= render "shared/footer" %>

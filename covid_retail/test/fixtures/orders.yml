@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_payment: 1
+  order_date: 2023-07-28
+  product: one
+  client: one
+  payment_type: one
+
+two:
+  total_payment: 1
+  order_date: 2023-07-28
+  product: two
+  client: two
+  payment_type: two

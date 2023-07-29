@@ -1,0 +1,35 @@
+<%= render "shared/navbar" %>
+<p style="color: green"><%= notice %></p>
+
+<div class="container" id="products">
+  <h1 class="text-center">Products</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <th scope="row"><%= product.id %></th>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td>$<%= product.price %></td>
+            <td><%= product.quantity %></td>
+            <td><%= link_to "Detalles", product %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+</div>
+
+<%= link_to "New product", new_product_path %>
+
+<%= render "shared/footer" %>

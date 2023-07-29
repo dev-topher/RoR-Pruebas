@@ -1,0 +1,3 @@
+class ClientType < ApplicationRecord
+
+end
